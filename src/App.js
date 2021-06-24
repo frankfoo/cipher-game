@@ -4,6 +4,9 @@ import mapping from './mapping.js';
 import updateBoard from './updateBoard.js';
 import validChar from './validChar.js';
 
+import {Container, Button, Typography, Box, Grid, TextField, Hidden } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+
 function App() {
   // Original Quote
   const [quote, setQuote] = React.useState([]);
@@ -56,16 +59,38 @@ function App() {
     setWin(flag);
   }, [board, quote]);
 
+  /* Material UI Styling*/
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat',
+        'sans-serif'
+      ].join(','),
+      body1: {
+        fontSize: 20,
+      }
+    },
+    spacing: 8,
+  });
+
+  const useStyles = makeStyles({
+    hiddenText: {
+      color: 'white',
+    }
+  });
+  const classes = useStyles();
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Substitution Cipher Game</h1>
-      <div className={styles.gameBox}>
-        <div className={styles.inputBox}>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Box pb={4} pt={4}>
+          <Typography variant="h3">Substitution Cipher Game</Typography>
+        </Box>
+        <Grid container pb={2} pt={2}>
           {board.map((item, key) => (
             (/[A-Z]/.test(quote[key]) &&
-              <div className={styles.box}>
-                <p>{cipher[key]}</p>
-                <input type="text" className={styles.input} maxLength="1" id={key} value={item} 
+              <Box display="flex" flexDirection="column" width="5%" alignItems='center'>
+                <Typography variant="body1" >{cipher[key]}</Typography>
+                <TextField variant="outlined" type="text" inputProps={{style:{textAlign:'center'}}} maxLength="1" id={key} value={item} 
                   onChange={(e) => {
                     if (e.target.value == '') {
                       let targetChar = board[key];
@@ -76,41 +101,41 @@ function App() {
                       setBoard([...updateBoard(e.target.value, key, cipher, board, 0)])
                     }
                   }
-                }></input>
-              </div>
+                }></TextField>
+              </Box>
               || /[.;',:]/.test(quote[key]) &&
-              <div className={styles.box}>
-                <p>{quote[key]}</p>
-                <input type="text" className={styles.input} value={quote[key]} disabled></input>
-              </div>
+              <Box display="flex" flexDirection="column" width="5%" alignItems='center'>
+                <Typography variant="body1">{quote[key]}</Typography>
+                <TextField variant="outlined" type="text" value={quote[key]} disabled></TextField>
+              </Box>
               || 
-              <div className={styles.box}>
-                <p className={styles.hidden}>a</p>
-                <input type="text" className={styles.input} disabled></input>
-              </div>
+              <Box display="flex" flexDirection="column" width="5%">
+                <Typography variant="body1" className={classes.hiddenText}>a</Typography>
+                <TextField variant="outlined" type="text" className={classes.disabledBox} disabled></TextField>
+              </Box>
             )
           ))}
-        </div>
-      </div>
-      <div className={styles.controls}>
-        <button className={styles.button} onClick={() => setReset(!reset)}>New Game</button>
-        {win && 
-          <p className={styles.correct}>CORRECT!</p>
-        }
-      </div>
-      <div className={styles.gameInfo}>
-        <h2 className={styles.gameInfoTitle}>Game Info:</h2>
-        <p>A substitution cipher is where each letter of the alphabet is mapped to a random letter, e.g. every A becomes a P, every B becomes an X.</p>
-        <p>Your job is to decipher the letters to get the original quote.</p>
-        <p>There are a few tricks that you can use:</p>
-        <p>Some letters in English occur more frequently than others e.g. ETAOIN are the top 6 most frequent letters</p>
-        <p>Do you see a single letter? It could be "A" or "I"</p>
-        <p>Do you see 2 letters that appear together? They could be "OO", "EE" etc...</p>
-        <p>Do you see apostrophes like xxx'x? That last letter could be a T, S etc...</p>
-        <p>There aren't that many 3 letter words</p>
-        <p>Good luck!</p>
-      </div>
-    </div>
+        </Grid>
+        <Box display="flex" pb={4} pt={4}>
+          <Button color="primary" variant="outlined" onClick={() => setReset(!reset)}>New Game</Button>
+          {win && 
+            <p className={styles.correct}>CORRECT!</p>
+          }
+        </Box>
+        <Box display="flex" flexDirection="column" pb={4} >
+          <Typography variant="h5" >Game Info:</Typography>
+          <p>A substitution cipher is where each letter of the alphabet is mapped to a random letter, e.g. every A becomes a P, every B becomes an X.</p>
+          <p>Your job is to decipher the letters to get the original quote.</p>
+          <p>There are a few tricks that you can use:</p>
+          <p>Some letters in English occur more frequently than others e.g. ETAOIN are the top 6 most frequent letters</p>
+          <p>Do you see a single letter? It could be "A" or "I"</p>
+          <p>Do you see 2 letters that appear together? They could be "OO", "EE" etc...</p>
+          <p>Do you see apostrophes like xxx'x? That last letter could be a T, S etc...</p>
+          <p>There aren't that many 3 letter words</p>
+          <p>Good luck!</p>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
 
