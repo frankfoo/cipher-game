@@ -1,24 +1,104 @@
 * {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
 }
 
 .container {
-    height: 100vh;
-    width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* TITLE */
+.title {
+  padding: 2vw 5vw 2vw;
+  border-bottom: 1px solid black;
+  height: 10%;
+  display: flex;
+  align-items: center;
+}
+
+/* ACTUAL GAME */
+.gameBox {
+  border-bottom: 1px solid black;
+  height: 60%;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
 
 .inputBox {
-    display: grid;
-    grid-template-columns: repeat(15, 1fr);
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  grid-row-gap: 1vh;
+}
+
+.inputBox p {
+  font-size: 1.5em;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hidden {
+  color: white;
 }
 
 .input {
-    height: 30px;
-    width: 30px;
+  height: 3vh;
+  width: 3vh;
+  font-size: 1.5em;
+  text-align: center;
 }
+
+.infoBox {
+  height: 30%;
+}
+
+/* GAME CONTROLS */
+.controls {
+  height: 20%;
+  border-bottom: 1px solid black;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  background-color: white;
+  font-size: 1em;
+  padding: 0.5vw;
+  border-radius: 12%;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+/* GAME INFO */
+.gameInfo {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  border-bottom: 1px solid black;
+  line-height: 1.4vw;
+}
+
+.gameInfoTitle {
+  padding-bottom: 2vh;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
