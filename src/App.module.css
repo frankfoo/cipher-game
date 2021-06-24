@@ -1,0 +1,24 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputBox {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+}
+
+.input {
+    height: 30px;
+    width: 30px;
+}
