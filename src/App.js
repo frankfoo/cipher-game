@@ -4,7 +4,8 @@ import mapping from './mapping.js';
 import updateBoard from './updateBoard.js';
 import validChar from './validChar.js';
 
-import {Container, Button, Typography, Box, Grid, TextField, Hidden } from '@material-ui/core';
+import {Container, Button, Typography, Box, Grid, TextField, Link, Card } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 function App() {
@@ -85,10 +86,10 @@ function App() {
         <Box pb={4} pt={4}>
           <Typography variant="h3">Substitution Cipher Game</Typography>
         </Box>
-        <Grid container pb={2} pt={2}>
+        <Grid container pb={2} pt={2} alignItems='center'>
           {board.map((item, key) => (
             (/[A-Z]/.test(quote[key]) &&
-              <Box display="flex" flexDirection="column" width="5%" alignItems='center'>
+              <Box display="flex" flexDirection="column" width="5%" alignItems='center' pb={1} pt={1}>
                 <Typography variant="body1" >{cipher[key]}</Typography>
                 <TextField variant="outlined" type="text" inputProps={{style:{textAlign:'center'}}} maxLength="1" id={key} value={item} 
                   onChange={(e) => {
@@ -116,23 +117,40 @@ function App() {
             )
           ))}
         </Grid>
-        <Box display="flex" pb={4} pt={4}>
-          <Button color="primary" variant="outlined" onClick={() => setReset(!reset)}>New Game</Button>
+        <Box display="flex" pb={4} pt={4} alignItems="center">
+          <Button color="default" variant="outlined" pr={5} onClick={() => setReset(!reset)}>New Game</Button>
+        </Box>
+        <Box pb={4}>
           {win && 
-            <p className={styles.correct}>CORRECT!</p>
+            <Alert onClose={() => {}}>Correct Answer</Alert>
           }
         </Box>
-        <Box display="flex" flexDirection="column" pb={4} >
-          <Typography variant="h5" >Game Info:</Typography>
-          <p>A substitution cipher is where each letter of the alphabet is mapped to a random letter, e.g. every A becomes a P, every B becomes an X.</p>
-          <p>Your job is to decipher the letters to get the original quote.</p>
-          <p>There are a few tricks that you can use:</p>
-          <p>Some letters in English occur more frequently than others e.g. ETAOIN are the top 6 most frequent letters</p>
-          <p>Do you see a single letter? It could be "A" or "I"</p>
-          <p>Do you see 2 letters that appear together? They could be "OO", "EE" etc...</p>
-          <p>Do you see apostrophes like xxx'x? That last letter could be a T, S etc...</p>
-          <p>There aren't that many 3 letter words</p>
-          <p>Good luck!</p>
+        <Card variant="outlined">
+          <Typography variant="body2">
+            A substitution cipher is where each letter of the alphabet is mapped to a random letter, e.g. every A becomes a P, every B becomes an X.
+            <br />
+            Your job is to decipher the letters to get the original quote.
+            <br />
+            There are a few tricks that you can use:
+            <br />
+            Some letters in English occur more frequently than others e.g. ETAOIN are the top 6 most frequent letters
+            <br />
+            Do you see a single letter? It could be "A" or "I"
+            <br /> 
+            Do you see 2 letters that appear together? They could be "OO", "EE" etc...
+            <br /> 
+            Do you see apostrophes like xxx'x? That last letter could be a T, S etc...
+            <br />
+            There aren't that many 3 letter words
+            <br />
+            Good luck!
+          </Typography>
+        </Card>
+        <Box display="flex" flexDirection="column" alignItems='flex-end' pb={2} pt={2}>
+         <Typography variant="caption">Created by Frank Foo.</Typography>
+         <Typography variant="caption">
+          <Link href='https://github.com/frankfoo/cipher-game'>Github Repo.</Link>
+        </Typography>
         </Box>
       </Container>
     </ThemeProvider>
