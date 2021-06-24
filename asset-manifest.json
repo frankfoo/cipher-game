@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/cipher-game/static/css/main.fa9f2363.chunk.css",
+    "main.js": "/cipher-game/static/js/main.545314f7.chunk.js",
+    "main.js.map": "/cipher-game/static/js/main.545314f7.chunk.js.map",
+    "runtime-main.js": "/cipher-game/static/js/runtime-main.8c19c80c.js",
+    "runtime-main.js.map": "/cipher-game/static/js/runtime-main.8c19c80c.js.map",
+    "static/js/2.d4f47e9a.chunk.js": "/cipher-game/static/js/2.d4f47e9a.chunk.js",
+    "static/js/2.d4f47e9a.chunk.js.map": "/cipher-game/static/js/2.d4f47e9a.chunk.js.map",
+    "index.html": "/cipher-game/index.html",
+    "static/css/main.fa9f2363.chunk.css.map": "/cipher-game/static/css/main.fa9f2363.chunk.css.map",
+    "static/js/2.d4f47e9a.chunk.js.LICENSE.txt": "/cipher-game/static/js/2.d4f47e9a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c19c80c.js",
+    "static/js/2.d4f47e9a.chunk.js",
+    "static/css/main.fa9f2363.chunk.css",
+    "static/js/main.545314f7.chunk.js"
+  ]
+}
